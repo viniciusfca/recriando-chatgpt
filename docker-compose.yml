@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: chatgpt-clone-db
+    environment:
+      POSTGRES_DB: chatgpt_clone
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - chatgpt-network
+      
+volumes:
+  postgres_data:
+
+networks:
+  chatgpt-network:
+    driver: bridge

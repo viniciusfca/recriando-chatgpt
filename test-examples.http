@@ -1,0 +1,37 @@
+### Teste das Rotas da API Clone ChatGPT
+
+### 1. Enviar primeira mensagem (nova conversa)
+POST http://localhost:3000/chat
+Content-Type: application/json
+
+{
+  "message": "Olá! Qual é a capital do Brasil?"
+}
+
+### 2. Continuar conversa existente
+POST http://localhost:3000/chat
+Content-Type: application/json
+
+{
+  "message": "E qual é a população dessa cidade?",
+  "conversationId": "{{conversationId}}"
+}
+
+### 3. Buscar conversa ativa
+GET http://localhost:3000/chat/conversations/{{conversationId}}
+
+### 4. Encerrar conversa
+PUT http://localhost:3000/chat/conversations/{{conversationId}}/close
+
+### 5. Listar histórico de conversas
+GET http://localhost:3000/chat/conversations/history
+
+### Teste com cURL
+
+# Nova conversa
+curl -X POST http://localhost:3000/chat \
+  -H "Content-Type: application/json" \
+  -d '{"message": "Olá! Como você pode me ajudar?"}'
+
+# Histórico
+curl http://localhost:3000/chat/conversations/history
