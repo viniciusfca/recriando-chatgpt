@@ -75,7 +75,7 @@ jobs:
       run: |
         cd recriando-chatgpt
         ls
-        sed -i 's|tag:.*|tag: ${{github.ref_name}}|' Deployment.yaml
+        sed -i 's|image: viniciusfca/recriando-chatgpt:.*|image: viniciusfca/recriando-chatgpt:${{github.ref_name}}|' Deployment.yaml
 
     - name: Commit and push changes
       run: |
