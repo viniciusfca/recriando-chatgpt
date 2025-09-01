@@ -65,14 +65,14 @@ jobs:
         
     - name: Update k8s deployment file
       run: |
-        cd recriando-chatgpt
+        cd gitops/recriando-chatgpt
         ls   # lista arquivos (debug)
         sed -i 's|image: viniciusfca/recriando-chatgpt:.*|image: viniciusfca/recriando-chatgpt:${{github.ref_name}}|' Deployment.yaml
         # substitui a imagem antiga pela nova versão no Deployment.yaml    
 
     - name: Commit and push
       run: |
-        cd recriando-chatgpt
+        cd gitops/recriando-chatgpt
         git config user.name "GitHub Actions"   # configura autor do commit
         git config user.email "actions@github.com"
         git add Deployment.yaml   # adiciona arquivo modificado
